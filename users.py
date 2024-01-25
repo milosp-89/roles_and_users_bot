@@ -1,12 +1,10 @@
 # main script for dm users
 
-
 # modules:
 from selenium.webdriver.support.ui import Select
 from main import wd_path, write_cookies
 from modules import *
 import pandas as pd
-
 
 # function to load .csv file into the memory:
 def file_read():
@@ -25,7 +23,6 @@ def file_read():
 
     return [org_list, user_email_list, user_role_list]
 
-
 # main function for creation of the roles:
 def users_bot(domain):
 
@@ -34,7 +31,7 @@ def users_bot(domain):
         email = y
         role = z
 
-        fixed_url = f"https://devicemagic.{domain}.icrc.org/organizations/{org}/organization_users"
+        fixed_url = f"https://ttt.{domain}.xxx/{org}/organization_users"
         main_url = fixed_url
         wdpath = Service(wd_path())
 
@@ -48,7 +45,7 @@ def users_bot(domain):
         cookies = json.load(open(cookies_file, "r"))
 
         for c in cookies:
-            c['domain'] = f"devicemagic.{domain}.icrc.org"
+            c['domain'] = f"xxx.{domain}.ttt"
             try:
                 driver.add_cookie(c)
             except:
@@ -80,13 +77,13 @@ def users_bot(domain):
             WebDriverWait(driver, 15).until(
                 EC.element_to_be_clickable((By.XPATH,
                                             "/html/body/div[2]/div[2]/div/a"))).click()
+            
     # outside the loops to quit the driver:
     driver.quit()
-    print("DM users created !!!")
-
+    print("Users created !!!")
 
 # calling functions:
 if __name__ == "__main__":
     write_cookies()
-    # define parameter for domain (ext or uat):
-    users_bot("ext")
+    # define parameter for domain:
+    users_bot("dom")
