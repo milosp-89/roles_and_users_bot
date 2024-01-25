@@ -1,15 +1,13 @@
 # main script for dm roles
 
-
 # modules:
 from main import wd_path, write_cookies
 from modules import *
 
-
 # main function to load cookies and to create roles using bot:
 def roles_bot(org_name, domain):
 
-    main_url = f"https://devicemagic.{domain}.icrc.org/organizations/{org_name}/user_roles"
+    main_url = f"https://ttt.{domain}.xxx/{org_name}/user_roles"
     wdpath = Service(wd_path())
 
     options = webdriver.FirefoxOptions()
@@ -22,7 +20,7 @@ def roles_bot(org_name, domain):
     cookies_file = "cookies.txt"
     cookies = json.load(open(cookies_file, "r"))
     for x in cookies:
-        x['domain'] = f"devicemagic.{domain}.icrc.org"
+        x['domain'] = f"yyy.{domain}.xxx"
         try:
             driver.add_cookie(x)
         except:
@@ -69,7 +67,7 @@ def roles_bot(org_name, domain):
                                     "user_role_permission_ids_8"))).click()
     WebDriverWait(driver, 15).until(
         EC.element_to_be_clickable((By.ID,
-                                    "user_role_permission_ids_9"))).click()  # added for destroy
+                                    "user_role_permission_ids_9"))).click()
     # Form submissions and DM database (all 4):
     WebDriverWait(driver, 15).until(
         EC.element_to_be_clickable((By.ID,
@@ -174,7 +172,7 @@ def roles_bot(org_name, domain):
                                     "user_role_permission_ids_39"))).click()
     WebDriverWait(driver, 15).until(
         EC.element_to_be_clickable((By.ID,
-                                    "user_role_permission_ids_41"))).click()  # added for update
+                                    "user_role_permission_ids_41"))).click()
     # go back at top and click create button
     driver.execute_script("window.scrollTo(0,-document.body.scrollTop)")
 
@@ -377,13 +375,14 @@ def roles_bot(org_name, domain):
     WebDriverWait(driver, 15).until(
         EC.presence_of_element_located((By.NAME, "commit")))
     driver.find_element(By.NAME, "commit").click()
+    
     time.sleep(1)
     driver.quit()
-    print(f"DM roles created for organization id: {org_name} !!!")
+    print(f"Roles created for organization id: {org_name} !!!")
 
 
 # calling functions:
 if __name__ == "__main__":
     write_cookies()
-    # define parameters for org id and domain (ext or uat):
-    roles_bot(1, "ext")
+    # define parameters for org id and domain:
+    roles_bot(n, "dom")
