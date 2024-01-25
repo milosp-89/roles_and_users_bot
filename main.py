@@ -1,9 +1,7 @@
 # main script for web driver and cookies
 
-
 # modules:
 from modules import *
-
 
 # function for web driver path
 def wd_path():
@@ -11,11 +9,10 @@ def wd_path():
     path = "wdriver/geckodriver.exe"
     return path
 
-
 # function to log in and fetch cookies:
 def login_and_fetch_cookies(email, password, domain):
 
-    login_url = f"https://devicemagic.{domain}.icrc.org/users/login"
+    login_url = f"https://xxx.{domain}.login"
     wdpath = Service(wd_path())
 
     options = webdriver.FirefoxOptions()
@@ -46,17 +43,17 @@ def login_and_fetch_cookies(email, password, domain):
 
     return driver
 
-
 # function to write fetched cookies:
 def write_cookies():
 
     cookies_file_location = "cookies.txt"
-    # define parameters for email, password and domain (ext or uat):
-    driver = login_and_fetch_cookies("mpopovic@icrc.org",
-                                     "ICRCmp1989",
-                                     "ext")
+    # define parameters for email, password and domain:
+    driver = login_and_fetch_cookies("xxx",
+                                     "yyy",
+                                     "dom")
     time.sleep(0.5)
     cookies_after_login = driver.get_cookies()
     json.dump(cookies_after_login,
               open(f"{cookies_file_location}", "w"))
+    
     driver.quit()
