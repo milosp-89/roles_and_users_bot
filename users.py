@@ -38,9 +38,10 @@ def users_bot(domain):
         options = webdriver.FirefoxOptions()
         options.add_argument("--headless")
         options.add_argument("--kiosk")
+        
         driver = webdriver.Firefox(service=wdpath, options=options)
-
         driver.get(main_url)
+        
         cookies_file = "cookies.txt"
         cookies = json.load(open(cookies_file, "r"))
 
