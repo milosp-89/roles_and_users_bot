@@ -76,12 +76,6 @@ def roles_bot(org_name, domain):
     driver.quit()
     print(f"Roles created for organization id: {org_name} !!!")
 
-    # enumerator role:
-    create_role(driver, "Enumerator", [2, 6, 10, 13, 22, 35])
-
-    time.sleep(1)
-    driver.quit()
-    print(f"Roles created for organization id: {org_name} !!!")
 
 # calling functions:
 if __name__ == "__main__":
