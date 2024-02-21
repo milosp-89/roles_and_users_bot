@@ -26,7 +26,9 @@ def file_read():
 # main function for creation of the roles:
 def users_bot(domain):
 
-    for x, y, z in zip(file_read()[0], file_read()[1], file_read()[2]):
+    for x, y, z in zip(file_read()[0],
+                       file_read()[1],
+                       file_read()[2]):
         org = x
         email = y
         role = z
@@ -78,8 +80,7 @@ def users_bot(domain):
             WebDriverWait(driver, 15).until(
                 EC.element_to_be_clickable((By.XPATH,
                                             "/html/body/div[2]/div[2]/div/a"))).click()
-            
-    # outside the loops to quit the driver:
+
     driver.quit()
     print("Users created !!!")
 
